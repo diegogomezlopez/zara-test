@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
@@ -16,6 +17,6 @@ public final class PriceSearchResponse {
     private final Integer priceList;
     private final LocalDate startDate;
     private final LocalDate endDate;
-    private final Double price;
+    private final BigDecimal price;
     private final String currency;
 }
