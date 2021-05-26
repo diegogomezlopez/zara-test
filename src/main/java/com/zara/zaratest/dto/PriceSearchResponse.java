@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Getter
 @Builder
 @AllArgsConstructor
-public final class PriceResponse {
+public final class PriceSearchResponse {
 
     private final Integer productId;
     private final Integer brandId;
