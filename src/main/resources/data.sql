@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS prices;
 
+-- TIMESTAMP can be replaced with VARCHAR(x) to maintain the date format given in the example
 CREATE TABLE prices (
   ID INT AUTO_INCREMENT PRIMARY KEY,
   BRAND_ID INT NOT NULL,
