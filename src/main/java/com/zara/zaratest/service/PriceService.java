@@ -1,10 +1,9 @@
 package com.zara.zaratest.service;
 
-import com.zara.zaratest.dto.PriceResponse;
-
-import java.time.LocalDateTime;
+import com.zara.zaratest.dto.PriceSearchRequest;
+import com.zara.zaratest.dto.PriceSearchResponse;
 
 public interface PriceService {
 
-    PriceResponse getPrice(final LocalDateTime date, final Integer product_id, final Integer brand_id);
+    PriceSearchResponse getPrice(final PriceSearchRequest request);
 }
