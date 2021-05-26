@@ -20,6 +20,14 @@ public class PriceServiceImpl implements PriceService {
     @Override
     public PriceSearchResponse getPrice(final PriceSearchRequest request) {
         Price price = repository.search(request.getDate(), request.getProductId(), request.getBrandId());
-        return null;
+        return PriceSearchResponse.builder()
+                .productId(price.getProductId())
+                .brandId(price.getBrandId())
+                .priceList(price.getPriceList())
+                .startDate(price.getStartDate())
+                .endDate(price.getEndDate())
+                .price(price.getPrice())
+                .currency(price.getCurrency())
+                .build();
     }
 }
