@@ -21,6 +21,6 @@ public final class PriceController {
 
     @GetMapping("/search")
     public PriceSearchResponse search(@Valid final PriceSearchRequest request) {
-        return priceService.getPrice(request);
+        return priceService.getPriceByPriority(request);
     }
 }
