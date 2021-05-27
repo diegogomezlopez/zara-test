@@ -2,6 +2,7 @@ package com.zara.zaratest.repository;
 
 import com.zara.zaratest.domain.Price;
 import com.zara.zaratest.exception.PriceServiceException;
+import com.zara.zaratest.util.DateToLocalDateTimeConverter;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -32,8 +33,8 @@ public class H2PriceRepository implements PriceRepository {
                 Price price = Price.builder()
                     .id(result.getInt("id"))
                     .brandId(result.getInt("brand_id"))
-                    .startDate(result.getDate("start_date").toLocalDate())
-                    .endDate(result.getDate("end_date").toLocalDate())
+                    .startDate(DateToLocalDateTimeConverter.convert(result.getDate("start_date")))
+                    .endDate(DateToLocalDateTimeConverter.convert(result.getDate("end_date")))
                     .priceList(result.getInt("price_list"))
                     .productId(result.getInt("product_id"))
                     .priority(result.getInt("priority"))
