@@ -24,7 +24,7 @@ public class PriceServiceImpl implements PriceService {
     public PriceSearchResponse getPriceByPriority(final PriceSearchRequest request) {
         Set<Price> prices = repository.search(request.getDate(), request.getProductId(), request.getBrandId());
         if (prices.isEmpty()) {
-            return PriceSearchResponse.builder().build();
+            return null;
         }
         return getPriceSearchResponse(prices.stream().max(Comparator.comparing(Price::getPriority))
                 .orElse(prices.iterator().next()));
