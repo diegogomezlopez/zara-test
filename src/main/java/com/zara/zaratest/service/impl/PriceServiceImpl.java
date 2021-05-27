@@ -8,6 +8,9 @@ import com.zara.zaratest.repository.PriceRepository;
 import com.zara.zaratest.service.PriceService;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.Set;
+
 @Service
 public class PriceServiceImpl implements PriceService {
 
@@ -18,8 +21,16 @@ public class PriceServiceImpl implements PriceService {
     }
 
     @Override
-    public PriceSearchResponse getPrice(final PriceSearchRequest request) {
-        Price price = repository.search(request.getDate(), request.getProductId(), request.getBrandId());
+    public PriceSearchResponse getPriceByPriority(final PriceSearchRequest request) {
+        Set<Price> prices = repository.search(request.getDate(), request.getProductId(), request.getBrandId());
+        if (prices.isEmpty()) {
+            return PriceSearchResponse.builder().build();
+        }
+        return getPriceSearchResponse(prices.stream().max(Comparator.comparing(Price::getPriority))
+                .orElse(prices.iterator().next()));
+    }
+
+    private PriceSearchResponse getPriceSearchResponse(final Price price) {
         return PriceSearchResponse.builder()
                 .productId(price.getProductId())
                 .brandId(price.getBrandId())
