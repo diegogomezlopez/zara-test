@@ -5,5 +5,5 @@ import com.zara.zaratest.dto.PriceSearchResponse;
 
 public interface PriceService {
 
-    PriceSearchResponse getPriceByPriority(final PriceSearchRequest request);
+    PriceSearchResponse searchPriceByPriority(final PriceSearchRequest request);
 }

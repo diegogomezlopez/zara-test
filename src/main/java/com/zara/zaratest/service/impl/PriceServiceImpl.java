@@ -21,7 +21,7 @@ public class PriceServiceImpl implements PriceService {
     }
 
     @Override
-    public PriceSearchResponse getPriceByPriority(final PriceSearchRequest request) {
+    public PriceSearchResponse searchPriceByPriority(final PriceSearchRequest request) {
         Set<Price> prices = repository.search(request.getDate(), request.getProductId(), request.getBrandId());
         if (prices.isEmpty()) {
             return null;
